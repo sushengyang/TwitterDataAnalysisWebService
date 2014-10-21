@@ -1,7 +1,17 @@
-Å[Compile]
-1. javac -cp \* Mapper.java
-2. javac -cp \* Reducer.java
-3. javac -cp \* Sort.java
+[usage]
+Just use the emr.jar with following command in AWS EMR:
 
-[Run]
-cat 15619f14twitter-parta-aa_part1 | java -cp .:\* Mapper | java -cp .:\* Sort | java -cp .:\* Reducer
+java -classpath emr.jar Mapper
+java -classpath emr.jar Reducer
+
+-cacheFile s3n://bbfee/HBase_log/java/emr.jar#emr.jar
+
+[lib]
+emr.jar - libarary for EMR mapreduce which includes json, mapper, reducer and dictionary table.
+          
+[src]
+json, mapper, reducer and dictionary table
+
+Å[utility]
+Trimmer - cut a part of original file
+Sort - sort when to test mapper, reducer
