@@ -25,6 +25,7 @@ public class Reducer {
 	 
 	public static void main(String[] args) throws UnsupportedEncodingException {
     	BufferedReader br = new BufferedReader(new InputStreamReader(System.in, "UTF-8"));
+		//BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     	String line = null;
     	
 		try {
@@ -37,13 +38,15 @@ public class Reducer {
 				String user_id = strArray[0];
 				String tweet_time = strArray[1];
 				String tweet_id = strArray[2];
-				String text = strArray[3];
+				String textHex = strArray[3];
+				String text = HexStringConverter.getInstance().hexToString(textHex);
+				
 				int score = calcSentScore(text, AFINN_TBL);
 				String censoredText = censorText(text, BANNED_TBL);
 				byte[] array = censoredText.getBytes("UTF-8");
 				String repText = new String(array, Charset.forName("UTF-8"));
 				System.out.println(user_id + "\t" + tweet_time + "\t" + tweet_id + 
-						"\t" + String.valueOf(score) + "\t" + repText);
+						":" + String.valueOf(score) + ":" + HexStringConverter.getInstance().stringToHex(repText));
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
