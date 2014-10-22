@@ -108,10 +108,6 @@ public class Reducer {
         }
     	return str.toString();
     }
-	
-	private static boolean isAscii(char ch) {
-        return ch < 128;
-    }
 
     private static int calcSentScore(String text, Map<String, Integer> afinnDict) {
     	if(text == null) {
@@ -129,7 +125,7 @@ public class Reducer {
     	StringBuilder word = new StringBuilder();
     	for(int i = 0; i < text2lower.length(); i++) {
     		char c = text2lower.charAt(i);
-    		if((Character.isAlphabetic(c) || Character.isDigit(c)) && isAscii(c)) {
+    		if(Character.isAlphabetic(c) || Character.isDigit(c)) {
     			word.append(c);
     		} else {
     			if(word.length() != 0) {
@@ -166,7 +162,7 @@ public class Reducer {
     	StringBuilder word = new StringBuilder();
     	for(int i = 0; i < text.length(); i++) {
     		char c = text.charAt(i);
-    		if((Character.isAlphabetic(c) || Character.isDigit(c)) && isAscii(c)){
+    		if(Character.isAlphabetic(c) || Character.isDigit(c)) {
     			word.append(c);
     			continue;
     		} 
