@@ -48,8 +48,10 @@ public class Mapper {
 				String rep = text.replace("\r\n", ";").replace("\n", ";").replace("\r", ";");
 				byte[] array = rep.getBytes("UTF-8");
 				String repText = new String(array, Charset.forName("UTF-8"));
-				System.out.println(user_id + "\t" + tweet_time + "\t" + tweet_id + "\t" + 
-      				HexStringConverter.getInstance().stringToHex(repText));
+				System.out.println(user_id + "\t" + tweet_time + "\t" + tweet_id + "\t" + repText);
+				
+				//System.out.println(user_id + "\t" + tweet_time + "\t" + tweet_id + "\t" + 
+      			//	HexStringConverter.getInstance().stringToHex(repText));
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -82,6 +84,6 @@ public class Mapper {
 		String time = strArray[3];
 		String year = strArray[5];
 				
-		return year + "-" + month + "-" + day + "-" + time;
+		return year + "-" + month + "-" + day + "+" + time;
 	}
 }
