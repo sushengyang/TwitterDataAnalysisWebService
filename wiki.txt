@@ -1,0 +1,26 @@
+[ETL]
+java -Dfile.encoding=UTF-8 -classpath emr.jar Mapper
+java -Dfile.encoding=UTF-8 -classpath emr.jar Reducer
+
+s3://15619f14twittertest2/600GB/15619f14twitter-parta-aa.gz
+-cacheFile s3n://bbfee/HBase_log/java/emr.jar#emr.jar
+
+[HBase]
+0. Download files from s3://bbfee/Twitter/twoline/
+
+1. hbase shell -> create 'twitter', 'info'
+
+twitter : table name
+info : column family name
+
+2. hadoop fs -mkdir /user/hadoop/test
+
+3. hadoop fs -put /mnt/ebs/data/part-00000_o /user/hadoop/test
+
+4. hbase org.apache.hadoop.hbase.mapreduce.ImportTsv -Dimporttsv.columns=HBASE_ROW_KEY,info:text twitter user/hadoop/test/part-00000_o
+
+[MySQL]
+
+
+
+
