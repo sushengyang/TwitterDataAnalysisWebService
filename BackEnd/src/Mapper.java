@@ -16,8 +16,7 @@ import java.io.UnsupportedEncodingException;
 public class Mapper {
 	public static void main(String[] args) throws UnsupportedEncodingException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in, "UTF-8"));
-		//BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-	    String line = null;
+		String line = null;
 	    JSONParser parser = new JSONParser();
 		ContainerFactory containerFactory = new ContainerFactory(){
 			public List creatArrayContainer() {
@@ -49,9 +48,6 @@ public class Mapper {
 				byte[] array = rep.getBytes("UTF-8");
 				String repText = new String(array, Charset.forName("UTF-8"));
 				System.out.println(user_id + "\t" + tweet_time + "\t" + tweet_id + "\t" + repText);
-				
-				//System.out.println(user_id + "\t" + tweet_time + "\t" + tweet_id + "\t" + 
-      			//	HexStringConverter.getInstance().stringToHex(repText));
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
